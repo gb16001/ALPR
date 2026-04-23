@@ -10,13 +10,12 @@ This repository provides:
 ---
 
 ## Models & Weights
-
-| Config | Model | Dataset | Backbone |
-|---|---|---|---|
-| `CCPD-mtLPRtr_CvNxt_FPN_STN_co2D.yaml` | mtLPRtr | CCPD | ConvNeXt-Tiny |
-| `CCPD18-mtLPRtr_CvNxt_FPN_STN_co2D.yaml` | mtLPRtr | CCPD2018 | ConvNeXt-Tiny |
-| `CCPD-exDETR_CDN_CvNxt_FPN_STN_co2D.yaml` | exDETR | CCPD | ConvNeXt-Nano |
-| `CCPD18-exDETR_CDN_CvNxt_FPN_STN_co2D.yaml` | exDETR | CCPD2018 | ConvNeXt-Nano |
+| Config | Model | Dataset |
+|---|---|---|
+| `CCPD-mtLPRtr_CvNxt_FPN_STN_co2D.yaml` | mtLPRtr | CCPD |
+| `CCPD18-mtLPRtr_CvNxt_FPN_STN_co2D.yaml` | mtLPRtr | CCPD2018 |
+| `CCPD-exDETR_CDN_CvNxt_FPN_STN_co2D.yaml` | exDETR | CCPD |
+| `CCPD18-exDETR_CDN_CvNxt_FPN_STN_co2D.yaml` | exDETR | CCPD2018 |
 
 Weights are released as `runs.tar.gz` on the [GitHub Releases](../../releases) page. Extract into the repo root:
 
