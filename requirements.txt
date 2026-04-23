@@ -1,0 +1,17 @@
+# python= 3.13
+torch
+torchvision
+opencv-python
+scipy
+jpeg4py
+pandas
+albumentations
+dynaconf
+tensorboard
+matplotlib
+scikit-learn
+# onnx
+# onnxruntime
+segmentation_models_pytorch
+tqdm
+pytorch-msssim

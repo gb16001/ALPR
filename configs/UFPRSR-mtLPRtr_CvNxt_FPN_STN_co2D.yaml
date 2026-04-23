@@ -1,0 +1,48 @@
+RESUME: true
+NUM_EPOCHS: 100
+DEVICE: cuda
+AMP_DTYPE: bf16
+GRADSCALER_ENABLE: false
+DATASET:
+  name: LRLPR_base
+  csvPath: datasets/UFPRSR/train.csv
+  batch_size: 32
+  n_worker: 10
+  drop_last: true
+VAL_SET:
+  name: LRLPR_base
+  csvPath: datasets/UFPRSR/test.csv
+  batch_size: 32
+  n_worker: 10
+  evaluator:
+    name: LPs_evaluator_v2
+MODEL:
+  name: mtLPRtr_CvNxt_FPN_STN_co2D
+  complile: true
+  args:
+    need_lpr: true
+    need_stn: false
+    need_mae: true
+  finetune_mode: false
+CRITERION:
+  name: UniversalLossV2
+OPTIM:
+  name: AdamW
+  backbone_lr: 0.0001
+  lr: 0.0005
+  betas:
+  - 0.9
+  - 0.999
+  weight_decay: 0.01
+LR_SCHEDULER:
+  name: OneCycleRexLR
+  max_lr:
+  - 0.0001
+  - 0.0005
+  pct_start: 0.3
+  div_factor: 25
+  final_div_factor: 10000.0
+LOGGER:
+  log_dir: runs/Gpaper-UFPRSR-CiT3_CvNxt_FPN_STN_co2D-mae-rex-pix
+  need_history_ckpt: true
+CHECKPOINT_DIR: checkpoints/Gpaper-UFPRSR-CiT3_CvNxt_FPN_STN_co2D-mae-rex-pix

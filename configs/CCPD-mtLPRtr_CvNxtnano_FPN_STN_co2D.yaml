@@ -1,0 +1,51 @@
+RESUME: true
+NUM_EPOCHS: 50
+DEVICE: cuda
+AMP_DTYPE: bf16
+GRADSCALER_ENABLE: false
+DATASET:
+  name: CCPD_base
+  csvPath: datasets/CCPD/CCPD_train.csv
+  preprocFun: img_Resize_jit_affine_norm_A
+  batch_size: 32
+  n_worker: 12
+  drop_last: true
+VAL_SET:
+  name: CCPD_base
+  csvPath: datasets/CCPD/CCPD_test_sample10.csv.gz
+  preprocFun: resize_cv2_norm
+  batch_size: 32
+  n_worker: 12
+  evaluator:
+    name: LPs_evaluator_v2
+MODEL:
+  name: mtLPRtr_CvNxtnano_FPN_STN_co2D
+  complile: true
+  args:
+    need_lpr: true
+    need_stn: true
+    need_mae: false
+  finetune_mode: false
+CRITERION:
+  name: UniversalLossV2
+OPTIM:
+  name: AdamW
+  backbone_lr: 0.0001
+  lr: 0.0005
+  betas:
+  - 0.9
+  - 0.999
+  weight_decay: 0.01
+LR_SCHEDULER:
+  name: OneCycleRexLR
+  max_lr:
+  - 0.0001
+  - 0.0005
+  pct_start: 0.3
+  div_factor: 25
+  final_div_factor: 10000.0
+LOGGER:
+  log_dir: runs/CCPD-mtLPRtr_CvNxtnano_FPN_STN_co2D
+  need_history_ckpt: false
+CHECKPOINT_DIR: runs/CCPD-mtLPRtr_CvNxtnano_FPN_STN_co2D
+CKPT_NAME: best.pth
